@@ -1,0 +1,607 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Navigation --- */
+#main-nav {
+    background-color: #333; /* Dark background for nav */
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed; /* Fixed position at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#main-nav .nav-container {
+    max-width: 1100px; /* Max width of nav content */
+    margin: 0 auto; /* Center nav content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem; /* Padding for nav content */
+}
+
+#main-nav .nav-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+#main-nav ul li {
+    margin-left: 20px;
+}
+
+#main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#main-nav ul li a:hover,
+#main-nav ul li a.active { /* '.active' class can be added by JS later if desired for current section */
+    background-color: #555;
+}
+
+/* Add padding to the body to prevent content from being hidden by the fixed nav */
+body {
+    font-family: sans-serif; /* Placeholder font */
+    line-height: 1.6;
+    color: #333; /* Placeholder text color */
+    background-color: #f4f4f4; /* Placeholder background color */
+    padding-top: 70px; /* Adjust this value based on the actual height of your nav bar */
+}
+
+section {
+    padding: 2rem 0; /* Add some vertical padding to sections */
+    text-align: center; /* Center section headings for now */
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+}
+
+/* --- Hero Section --- */
+#home {
+    background-color: #e0e0e0; /* Placeholder background color for hero */
+    min-height: 80vh; /* Make hero section take up a good portion of the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem; /* Add padding for smaller screens */
+}
+
+.hero-content {
+    max-width: 800px; /* Limit width of content */
+}
+
+#home #headline {
+    font-size: 2.5rem; /* Example size, adjust as needed */
+    margin-bottom: 1rem;
+    color: #333; /* Example color */
+}
+
+#home #introduction {
+    font-size: 1.1rem; /* Example size */
+    margin-bottom: 2rem;
+    color: #555; /* Example color */
+}
+
+.cta-buttons .cta-button {
+    display: inline-block;
+    background-color: #337ab7; /* Example button color */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* For hover effect later */
+}
+
+/* Placeholder for hero image styling if added later */
+/*
+.hero-image {
+    width: 150px; /* Example size */
+    height: 150px;
+    border-radius: 50%; /* Make it circular if it's a headshot */
+    margin-top: 1rem;
+    object-fit: cover; /* Ensure image covers the area well */
+}
+*/
+
+/* --- About Me Section --- */
+#about {
+    background-color: #ffffff; /* White background for contrast */
+    padding: 3rem 2rem; /* More padding */
+    text-align: left; /* Align text to left for readability */
+}
+
+#about h2 {
+   text-align: center; /* Center the main section heading */
+   font-size: 2rem;
+   margin-bottom: 2rem;
+}
+
+.about-content {
+    max-width: 900px; /* Max width for content */
+    margin: 0 auto; /* Center the content block */
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 2rem; /* Space between items */
+}
+
+.biography h3, .skills h3, .experience-education h3 {
+    font-size: 1.5rem;
+    color: #337ab7; /* Accent color for subheadings */
+    margin-bottom: 1rem;
+}
+
+.skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns for skills */
+    gap: 1.5rem;
+}
+
+.skill-category h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.skills ul {
+    list-style: none; /* Remove default bullet points */
+    padding-left: 0;
+}
+
+.skills ul li {
+    background-color: #f0f0f0; /* Light background for skill items */
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.experience-item, .education-item {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #337ab7; /* Accent border */
+}
+
+.experience-item h4, .education-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.experience-item p, .education-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.experience-item p em, .education-item p em { /* For dates */
+   color: #555;
+   font-size: 0.85rem;
+}
+
+/* Adjust grid for wider screens for biography and skills/experience */
+@media (min-width: 768px) {
+    .about-content {
+       /* Could do 2 columns if desired, e.g., biography on one side, skills/exp on other */
+       /* grid-template-columns: 2fr 1fr; */
+    }
+}
+
+/* --- Projects Section --- */
+#projects {
+    background-color: #f9f9f9; /* Slightly different background */
+    padding: 3rem 2rem;
+}
+
+#projects h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: #333;
+}
+
+.projects-grid {
+    display: grid;
+    /* Create responsive columns: 1 on small, 2 on medium, 3 on large screens */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Space between project cards */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid */
+}
+
+.project-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the border-radius clips the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 200px; /* Fixed height for thumbnails */
+    object-fit: cover; /* Cover the area, might crop */
+}
+
+.project-info {
+    padding: 1.5rem;
+    flex-grow: 1; /* Allows info to fill space if cards have uneven text */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    color: #337ab7; /* Accent color */
+    margin-bottom: 0.75rem;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Pushes tech and links down if description is short */
+}
+
+.project-tech {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.project-tech strong {
+    color: #444;
+}
+
+.project-links {
+    margin-top: auto; /* Pushes links to the bottom of the card */
+}
+
+.project-links .project-link {
+    display: inline-block;
+    background-color: #5cb85c; /* Example: Green for view, could be different for GitHub */
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-top: 5px; /* For wrapping on small screens */
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.project-links .project-link:last-child {
+    background-color: #6c757d; /* Example: Grey for GitHub */
+}
+
+.project-links .project-link:hover {
+    opacity: 0.8;
+}
+
+/* --- Contact Section --- */
+#contact {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+}
+
+#contact h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: #333;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+    }
+}
+
+.contact-form-container h3, .contact-info-container h3 {
+    font-size: 1.5rem;
+    color: #337ab7;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resize only */
+}
+
+#contact-form .cta-button { /* Reusing .cta-button style from hero, can be customized */
+    display: inline-block;
+    background-color: #337ab7;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none; /* Remove default button border */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form .cta-button:hover {
+    background-color: #286090; /* Darken on hover */
+}
+
+.contact-info-container p {
+   margin-bottom: 1rem;
+   line-height: 1.7;
+}
+
+.contact-details {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-details li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.contact-details li strong {
+    color: #333;
+}
+
+.contact-details a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Optional map placeholder styling */
+/*
+#map-placeholder {
+    margin-top: 2rem;
+    height: 200px;
+    background-color: #e9e9e9;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #777;
+    border-radius: 4px;
+}
+*/
+
+/* --- Footer --- */
+footer {
+    background-color: #333; /* Same as nav for consistency */
+    color: #bbb; /* Lighter text color for footer */
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem; /* Space above the footer */
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.footer-nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.footer-nav ul li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-nav ul li a:hover {
+    color: #fff;
+}
+
+.social-media-links {
+    margin-bottom: 1rem;
+}
+
+.social-media-links a {
+    color: #bbb;
+    text-decoration: none;
+    margin: 0 8px;
+    font-size: 0.9rem; /* Adjust if using icons */
+}
+
+.social-media-links a:hover {
+    color: #fff;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* --- Responsive Design --- */
+
+/* General adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        /* Reduce padding-top if nav height changes, or adjust nav height itself */
+        /* padding-top: 60px; /* Example if nav becomes smaller */
+    }
+
+    h1, #home #headline { /* Target headline more specifically if needed */
+        font-size: 2rem; /* Smaller headline on mobile */
+    }
+
+    #home #introduction {
+        font-size: 1rem;
+    }
+
+    #about h2, #projects h2, #contact h2 {
+        font-size: 1.8rem; /* Smaller section titles */
+    }
+
+    section {
+        padding: 2rem 1rem; /* Reduce padding on sections */
+    }
+
+    /* --- Navigation Adjustments (Simple) --- */
+    #main-nav .nav-container {
+        flex-direction: column; /* Stack logo and links */
+        padding: 0.5rem 1rem; /* Adjust padding for stacked nav */
+    }
+
+    #main-nav .nav-logo {
+        margin-bottom: 0.5rem; /* Space below logo when stacked */
+    }
+
+    #main-nav ul {
+        flex-direction: column; /* Stack nav links */
+        width: 100%;
+        text-align: center;
+    }
+
+    #main-nav ul li {
+        margin: 5px 0; /* Adjust margin for vertical layout */
+        display: block; /* Make li full width for easier tapping */
+    }
+    
+    #main-nav ul li a {
+        display: block; /* Make links fill their li for easier tapping */
+        padding: 8px;
+    }
+
+    /* Adjust body padding top if nav height changed due to stacking */
+    body {
+         /* Calculate new padding-top based on the new height of the stacked nav */
+         /* This is tricky without JS to get height, estimate or set fixed nav height for mobile */
+         /* For now, let's assume the previous padding-top: 70px; might still be okay or need slight reduction */
+         /* If nav height became, say, 100px after stacking, then body padding-top should be 100px */
+         /* This will be refined when/if a proper hamburger menu is built. */
+         /* For now, let's make the mobile nav a bit shorter to avoid a large body padding */
+    }
+    
+    #main-nav {
+        padding: 0.5rem 0; /* Reduce nav padding */
+        position: static; /* For simpler stacking, remove fixed. Will re-evaluate with hamburger. */
+                         /* If static, body padding-top is not needed for mobile. */
+    }
+    /* If main-nav becomes static, the body padding-top for fixed nav is not needed on mobile */
+    /* So, we reset it here: */
+    body {
+        padding-top: 0 !important; /* Reset padding-top for mobile if nav is static */
+    }
+
+
+    /* --- About Me Section Adjustments --- */
+    .about-content {
+        /* Already single column by default, so grid-template-columns: 1fr; is fine */
+        /* Ensure skills categories also stack well if they were multi-column */
+    }
+    .skills-categories {
+        grid-template-columns: 1fr; /* Stack skill categories */
+    }
+
+    /* --- Projects Section Adjustments --- */
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column for project cards */
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        margin-bottom: 1rem; /* Add some margin if not gapped enough */
+    }
+
+    /* --- Contact Section Adjustments --- */
+    .contact-container {
+        grid-template-columns: 1fr; /* Stack form and info */
+    }
+    
+    #contact-form .cta-button {
+        width: 100%; /* Make send button full width */
+        padding: 15px;
+    }
+}
+
+/* Further adjustments for very small screens (e.g., less than 480px) if needed */
+@media (max-width: 480px) {
+    #home #headline {
+        font-size: 1.8rem;
+    }
+
+    .cta-buttons .cta-button {
+        display: block; /* Stack CTA buttons in hero */
+        width: 80%;
+        margin: 0.5rem auto; /* Center them when stacked */
+    }
+
+    .footer-nav ul li {
+        display: block; /* Stack footer nav links */
+        margin: 5px 0;
+    }
+
+    .social-media-links a {
+        display: block; /* Stack social media links if they are many */
+        margin-bottom: 0.5rem;
+    }
+}
