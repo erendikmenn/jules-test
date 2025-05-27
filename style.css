@@ -5,114 +5,223 @@
     box-sizing: border-box;
 }
 
-/* --- Navigation --- */
+html {
+    font-size: 16px; /* Base font size for rem units */
+    scroll-behavior: smooth;
+}
+
+/* --- New Navigation Styles --- */
 #main-nav {
-    background-color: #333; /* Dark background for nav */
-    color: #fff;
+    background-color: #FFFFFF; /* White background for a cleaner look */
     padding: 1rem 0;
-    position: fixed; /* Fixed position at the top */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensure it's above other content */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Softer shadow */
+    transition: background-color 0.3s ease; /* For potential scroll effects later */
+}
+
+/* Adjust body padding to account for fixed nav height */
+/* The actual height might be around 60-70px. Let's use 70px for now. */
+body {
+    font-family: 'Roboto', 'Arial', sans-serif; /* Roboto for body text */
+    line-height: 1.7; /* Increased for readability */
+    color: #212529; /* Updated body text color */
+    background-color: #F8F9FA; /* Existing light background */
+    margin: 0; /* Ensure no default body margin */
+    padding-top: 70px; /* This replaces previous padding-top logic */
 }
 
 #main-nav .nav-container {
-    max-width: 1100px; /* Max width of nav content */
-    margin: 0 auto; /* Center nav content */
+    /* Uses .container class for max-width and centering, but nav needs its own padding */
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem; /* Padding for nav content */
+    padding: 0 1rem; /* Padding for nav content */
 }
 
 #main-nav .nav-logo {
-    color: #fff;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    color: #343A40; /* Dark logo text */
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.75rem; /* Slightly larger logo */
+    font-weight: 700;
 }
 
-#main-nav ul {
+#main-nav .nav-links { /* Target the UL with the new class */
     list-style: none;
     display: flex;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
 }
 
-#main-nav ul li {
-    margin-left: 20px;
+#main-nav .nav-links li {
+    margin-left: 1.5rem; /* Spacing between links */
 }
 
-#main-nav ul li a {
-    color: #fff;
+#main-nav .nav-links li a {
+    color: #343A40; /* Dark link text */
     text-decoration: none;
     font-size: 1rem;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600; /* Montserrat semi-bold for nav links */
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    padding: 0.5rem 0.25rem; /* Vertical padding for larger click area, minimal horizontal */
+    position: relative; /* For active link indicator */
+    transition: color 0.3s ease;
 }
 
-#main-nav ul li a:hover,
-#main-nav ul li a.active { /* '.active' class can be added by JS later if desired for current section */
-    background-color: #555;
+#main-nav .nav-links li a:hover {
+    color: #0A74DA; /* Primary blue on hover */
+    text-decoration: none; /* Keep no underline */
 }
 
-/* Add padding to the body to prevent content from being hidden by the fixed nav */
-body {
-    font-family: sans-serif; /* Placeholder font */
-    line-height: 1.6;
-    color: #333; /* Placeholder text color */
-    background-color: #f4f4f4; /* Placeholder background color */
-    padding-top: 70px; /* Adjust this value based on the actual height of your nav bar */
+/* Active link indicator (example, can be refined) */
+#main-nav .nav-links li a.active::after,
+#main-nav .nav-links li a:hover::after { /* Show on hover too for feedback */
+   content: '';
+   position: absolute;
+   bottom: -2px; /* Position below the link */
+   left: 0;
+   width: 100%;
+   height: 2px;
+   background-color: #0A74DA; /* Primary blue */
+}
+/* JS will be needed to add 'active' class based on current page */
+
+/* Hamburger Menu Button Styles */
+.hamburger-menu {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem; /* Space from logo if links are hidden */
 }
 
+.hamburger-menu .hamburger-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #343A40; /* Dark bars */
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Global Link Styles */
+a {
+    color: #0A74DA; /* Primary blue for links */
+    text-decoration: none; /* Remove underlines by default */
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #0056b3; /* Darker shade of primary blue for hover (current one is fine) */
+    text-decoration: underline; /* Add underline on hover for clarity */
+}
+
+
+/* General Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Arial', sans-serif; /* Montserrat for headings */
+    font-weight: 700; /* Bolder weight for headings */
+    margin-top: 1.5rem; /* More space above headings */
+    margin-bottom: 1rem; /* Consistent space below headings */
+    line-height: 1.3; /* Tighter line height for headings */
+    color: #343A40; /* Darker grey for headings */
+}
+
+h1 { font-size: 3rem; letter-spacing: -0.5px; } /* Slightly larger, adjust letter-spacing for large headings */
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+/* Specific heading styles (e.g. #home #headline) might override these. Review them later. */
+
+
+/* Base Section Styles */
 section {
-    padding: 2rem 0; /* Add some vertical padding to sections */
-    text-align: center; /* Center section headings for now */
+    padding: 4rem 2rem; /* Increased padding for more whitespace */
+    /* text-align: center; /* Remove global text-align center from sections, apply where needed */
+    margin-bottom: 2rem; /* Space between sections */
+}
+
+/* Container class for centering content within sections */
+.container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Commenting out old conflicting generic styles */
+/*
+section {
+    padding: 2rem 0; 
+    text-align: center; 
 }
 
 h1, h2, h3 {
     margin-bottom: 1rem;
 }
+*/
 
 /* --- Hero Section --- */
 #home {
-    background-color: #e0e0e0; /* Placeholder background color for hero */
+    /* background-color: #e0e0e0; /* REMOVE placeholder background color */
     min-height: 80vh; /* Make hero section take up a good portion of the viewport height */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem; /* Add padding for smaller screens */
+    padding: 4rem 0; /* Vertical padding, container handles horizontal */
 }
 
 .hero-content {
     max-width: 800px; /* Limit width of content */
 }
 
-#home #headline {
-    font-size: 2.5rem; /* Example size, adjust as needed */
-    margin-bottom: 1rem;
-    color: #333; /* Example color */
+#home .hero-content #headline { /* Was #home #headline */
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem; /* Increased margin */
+    color: #343A40; /* Ensure it uses the heading color */
 }
 
-#home #introduction {
-    font-size: 1.1rem; /* Example size */
-    margin-bottom: 2rem;
-    color: #555; /* Example color */
+#home .hero-content #introduction { /* Was #home #introduction */
+    font-size: 1.1rem; /* Or adjust based on new body font & scale */
+    margin-bottom: 2.5rem; /* Increased margin */
+    max-width: 700px; /* Constrain width of intro paragraph */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.cta-buttons .cta-button {
+.cta-buttons .cta-button { /* This is the main CTA style, also used by contact form button */
+    font-family: 'Roboto', 'Arial', sans-serif; /* Or Montserrat if a bolder button look is desired */
+    font-weight: 700; /* Bolder text for buttons */
     display: inline-block;
-    background-color: #337ab7; /* Example button color */
-    color: #fff;
-    padding: 10px 20px;
+    background-color: #0A74DA; /* Primary blue */
+    color: #ffffff;
+    padding: 10px 20px; /* Adjust padding as needed for aesthetics */
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Consider adjusting for modern feel, e.g., 4px or 6px */
     margin: 0.5rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease; /* For hover effect later */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Ensure no default border */
+    cursor: pointer;
+}
+
+.cta-buttons .cta-button:hover {
+    background-color: #0056b3; /* Darker shade of primary blue */
+    transform: translateY(-2px) scale(1.03); /* Subtle lift and scale */
+    box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3); /* Slightly more pronounced shadow on hover */
 }
 
 /* Placeholder for hero image styling if added later */
@@ -128,29 +237,32 @@ h1, h2, h3 {
 
 /* --- About Me Section --- */
 #about {
-    background-color: #ffffff; /* White background for contrast */
-    padding: 3rem 2rem; /* More padding */
+    background-color: #ffffff; /* Keep if distinct background for about section */
+    /* padding: 3rem 2rem; /* REMOVE, use global section padding + container */
     text-align: left; /* Align text to left for readability */
 }
 
 #about h2 {
-   text-align: center; /* Center the main section heading */
-   font-size: 2rem;
-   margin-bottom: 2rem;
+   text-align: center; /* Center the main section heading - Retain specific alignment */
+   /* font-size: 2rem; */ /* Potentially overridden by global h2 */
+   margin-bottom: 2rem; /* Retain specific margin */
 }
 
 .about-content {
-    max-width: 900px; /* Max width for content */
-    margin: 0 auto; /* Center the content block */
+    max-width: 900px; /* Max width for content - Retain specific max-width */
+    margin: 0 auto; /* Center the content block - Retain specific margin */
     display: grid;
     grid-template-columns: 1fr; /* Single column by default */
-    gap: 2rem; /* Space between items */
+    gap: 3rem; /* Increased gap */
 }
 
-.biography h3, .skills h3, .experience-education h3 {
-    font-size: 1.5rem;
-    color: #337ab7; /* Accent color for subheadings */
-    margin-bottom: 1rem;
+.biography h3, .skills h3, .experience-education h3,
+#contact .contact-form-container h3, #contact .contact-info-container h3,
+.project-detail h1, /* Project detail main title */
+.project-content-sections h3 /* Project detail sub-titles */ {
+    /* font-size: 1.5rem; */ /* Potentially overridden by global h3 */
+    color: #0A74DA; /* Primary blue for these important subheadings */
+    margin-bottom: 1rem; /* Potentially overridden by global h3 margin */
 }
 
 .skills-categories {
@@ -170,17 +282,18 @@ h1, h2, h3 {
 }
 
 .skills ul li {
-    background-color: #f0f0f0; /* Light background for skill items */
+    background-color: #e9ecef; /* Lighter grey, derived from neutrals */
     padding: 8px 12px;
     margin-bottom: 8px;
     border-radius: 4px;
     font-size: 0.95rem;
+    color: #343A40; /* Darker text for readability */
 }
 
 .experience-item, .education-item {
     margin-bottom: 1.5rem;
     padding-left: 1rem;
-    border-left: 3px solid #337ab7; /* Accent border */
+    border-left: 3px solid #0A74DA; /* Primary blue accent border */
 }
 
 .experience-item h4, .education-item h4 {
@@ -208,122 +321,150 @@ h1, h2, h3 {
 
 /* --- Projects Section --- */
 #projects {
-    background-color: #f9f9f9; /* Slightly different background */
-    padding: 3rem 2rem;
+    background-color: #f9f9f9; /* Keep if distinct background */
+    /* padding: 3rem 2rem; /* REMOVE */
 }
 
 #projects h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: #333;
+    text-align: center; /* Retain specific alignment */
+    /* font-size: 2rem; */ /* Potentially overridden by global h2 */
+    margin-bottom: 2.5rem; /* Retain specific margin */
+    /* color: #333; */ /* Potentially overridden by global h2 color */
 }
 
-.projects-grid {
+/* --- Project Card Redesign --- */
+.projects-grid { /* Parent container */
     display: grid;
-    /* Create responsive columns: 1 on small, 2 on medium, 3 on large screens */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; /* Space between project cards */
-    max-width: 1200px; /* Max width for the grid */
-    margin: 0 auto; /* Center the grid */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly larger min-width for cards */
+    gap: 2.5rem; /* Existing gap, can be adjusted if needed */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .project-card {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden; /* Ensures the border-radius clips the image */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
+    background-color: #FFFFFF; /* White background */
+    border-radius: 8px; /* Slightly more pronounced radius */
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Softer, more modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%; /* Make cards in a row equal height if grid allows */
+    border: none; /* Remove previous border: 1px solid #ddd; as shadow is primary */
 }
 
 .project-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* More noticeable lift */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
 }
 
 .project-thumbnail {
     width: 100%;
-    height: 200px; /* Fixed height for thumbnails */
-    object-fit: cover; /* Cover the area, might crop */
+    height: 220px; /* Slightly taller thumbnail */
+    object-fit: cover;
+    /* No border needed if overflow:hidden on card works well */
 }
 
-.project-info {
-    padding: 1.5rem;
-    flex-grow: 1; /* Allows info to fill space if cards have uneven text */
+.project-card .project-info { /* Updated selector */
+    padding: 1.75rem; /* Adjusted padding */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    text-align: left; /* Ensure text is left-aligned */
 }
 
-.project-title {
-    font-size: 1.4rem;
-    color: #337ab7; /* Accent color */
+.project-title { /* This is the H3 element */
+    font-size: 1.6rem; /* Adjusted size, uses Montserrat via h3 global style */
+    margin-top: 0; /* Remove top margin if it's the first element */
     margin-bottom: 0.75rem;
 }
 
+.project-title a {
+    /* Styles for color and hover are already: */
+    /* color: #0A74DA; text-decoration: none; */
+    /* &:hover { color: #0056b3; text-decoration: underline; } */
+    /* These are good, ensure they are not overridden. */
+}
+
 .project-description {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 1rem;
-    flex-grow: 1; /* Pushes tech and links down if description is short */
+    font-size: 0.95rem; /* Uses Roboto via body style */
+    color: #495057; /* Slightly lighter than main body text for secondary info */
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex-grow: 1; /* Helps push tech and links down */
 }
 
 .project-tech {
     font-size: 0.85rem;
-    color: #777;
-    margin-bottom: 1rem;
+    color: #6C757D; /* Secondary grey for tech stack */
+    margin-bottom: 1.5rem; /* More space before links */
 }
 
 .project-tech strong {
-    color: #444;
+    color: #495057; /* Darker than its surrounding text */
 }
 
 .project-links {
-    margin-top: auto; /* Pushes links to the bottom of the card */
+    margin-top: auto; /* Pushes links to the bottom */
+    padding-top: 1rem; /* Add some space above links if description is short */
+    border-top: 1px solid #e9ecef; /* Subtle separator line */
+    display: flex; /* Align buttons nicely */
+    gap: 0.75rem; /* Space between buttons */
 }
 
+/* Project link buttons are already styled by .project-link:first-child and :last-child */
+/* Review their padding and font-size for the new card design if needed */
 .project-links .project-link {
-    display: inline-block;
-    background-color: #5cb85c; /* Example: Green for view, could be different for GitHub */
-    color: #fff;
-    padding: 8px 15px;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-right: 10px;
-    margin-top: 5px; /* For wrapping on small screens */
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
+    /* display: inline-block; - from previous styles */
+    /* background-color set by :first-child, :last-child */
+    /* color: #fff; - from previous */
+    padding: 0.5rem 1rem; /* Adjust padding for better fit */
+    /* text-decoration: none; - from previous */
+    border-radius: 4px; /* Consistent radius */
+    /* margin-right: 10px; /* Replaced by gap */
+    /* margin-top: 5px; /* Replaced by gap and flex alignment */
+    font-size: 0.85rem; /* Slightly smaller font for buttons in card */
+    /* transition: background-color 0.3s ease, transform 0.2s ease; - from previous */
+    text-align: center;
+    flex-grow: 1; /* Make buttons take equal width if desired */
 }
 
-.project-links .project-link:last-child {
-    background-color: #6c757d; /* Example: Grey for GitHub */
+.project-links .project-link:first-child { /* Or use a specific class if structure varies */
+   background-color: #0A74DA; /* Primary blue */
+}
+.project-links .project-link:first-child:hover {
+   background-color: #0056b3; /* Darker primary */
+   transform: translateY(-3px) scale(1.05); /* Lift and scale for project links */
 }
 
-.project-links .project-link:hover {
-    opacity: 0.8;
+.project-links .project-link:last-child { /* Or use a specific class */
+   background-color: #6C757D; /* Secondary grey */
 }
+.project-links .project-link:last-child:hover {
+   background-color: #545b62; /* Darker secondary */
+   transform: translateY(-3px) scale(1.05); /* Lift and scale for project links */
+}
+
 
 /* --- Contact Section --- */
 #contact {
-    background-color: #ffffff;
-    padding: 3rem 2rem;
+    background-color: #ffffff; /* Keep if distinct background */
+    /* padding: 3rem 2rem; /* REMOVE */
 }
 
 #contact h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: #333;
+    text-align: center; /* Retain specific alignment */
+    /* font-size: 2rem; */ /* Potentially overridden by global h2 */
+    margin-bottom: 2.5rem; /* Retain specific margin */
+    /* color: #333; */ /* Potentially overridden by global h2 color */
 }
 
 .contact-container {
     display: grid;
     grid-template-columns: 1fr; /* Single column by default */
-    gap: 3rem;
-    max-width: 900px;
-    margin: 0 auto;
+    gap: 3rem; /* Increased gap - already 3rem, ensure it's intended */
+    max-width: 900px; /* Retain specific max-width */
+    margin: 0 auto; /* Retain specific margin */
 }
 
 @media (min-width: 768px) {
@@ -332,82 +473,117 @@ h1, h2, h3 {
     }
 }
 
-.contact-form-container h3, .contact-info-container h3 {
-    font-size: 1.5rem;
-    color: #337ab7;
-    margin-bottom: 1rem;
+/* .contact-form-container and section title styles are already in place and should be fine. */
+/* Focus on .contact-form-container and form elements. */
+
+.contact-form-container {
+    /* background-color: #f8f9fa; /* Optional: subtle background for form area */
+    /* padding: 2rem; */ /* Optional: if adding a distinct background */
+    /* border-radius: 8px; */ /* Optional: if adding a distinct background */
+}
+
+.contact-form-container h3 {
+    /* color: #0A74DA; /* Already styled - Primary blue */
+    /* font-size: 1.75rem; /* Already styled via h3 global */
+    margin-bottom: 1.5rem; /* Ensure good spacing */
+    text-align: left; /* Override potential parent center-align */
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.75rem; /* Slightly more space between form groups */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #444;
+    margin-bottom: 0.6rem; /* Space between label and input */
+    font-weight: 600; /* Montserrat semi-bold */
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 0.95rem;
+    color: #343A40; /* Dark heading color for labels */
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.85rem 1rem; /* Comfortable padding */
+    border: 1px solid #ced4da; /* Softer border color */
+    border-radius: 6px; /* Slightly more modern radius */
+    font-size: 1rem; /* Roboto font */
+    font-family: 'Roboto', 'Arial', sans-serif;
+    color: #495057; /* Input text color */
+    background-color: #FFFFFF; /* Ensure white background */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    line-height: 1.5; /* Ensure consistent line height */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #0A74DA; /* Primary blue border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(10, 116, 218, 0.25); /* Subtle focus glow */
+    outline: none; /* Remove default outline */
 }
 
 .form-group textarea {
-    resize: vertical; /* Allow vertical resize only */
+    resize: vertical; /* Allow vertical resize */
+    min-height: 120px; /* Good minimum height for message */
 }
 
-#contact-form .cta-button { /* Reusing .cta-button style from hero, can be customized */
-    display: inline-block;
-    background-color: #337ab7;
-    color: #fff;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    border: none; /* Remove default button border */
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+/* The submit button already uses .cta-button style, which has been updated: */
+/* .cta-button { background-color: #0A74DA; color: #fff; ... } */
+/* Ensure it fits well within the form context */
+#contact-form .cta-button {
+    width: 100%; /* Make button full width for this form */
+    padding: 0.85rem 1rem; /* Match input padding for consistency */
+    font-size: 1.05rem; /* Slightly larger font for submit button */
+    /* Other .cta-button styles like font-weight, transitions will apply */
 }
 
-#contact-form .cta-button:hover {
-    background-color: #286090; /* Darken on hover */
+/* Styles for validation messages (to be used with JavaScript later) */
+.form-group .error-message {
+    display: none; /* Hidden by default */
+    color: #dc3545; /* Red for error messages */
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.form-group input.invalid, /* Class added by JS if field is invalid */
+.form-group textarea.invalid {
+    border-color: #dc3545; /* Red border for invalid fields */
+}
+
+.form-group input.invalid:focus,
+.form-group textarea.invalid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Red glow for invalid focused fields */
+}
+
+/* Contact Info side (.contact-info-container) */
+.contact-info-container h3 {
+    /* color: #0A74DA; /* Already styled - Primary blue */
+    /* font-size: 1.75rem; /* Already styled via h3 global */
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .contact-info-container p {
-   margin-bottom: 1rem;
-   line-height: 1.7;
-}
-
-.contact-details {
-    list-style: none;
-    padding: 0;
+    font-size: 1rem; /* Ensure consistent font size */
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
 }
 
 .contact-details li {
-    margin-bottom: 0.8rem;
     font-size: 1rem;
+    margin-bottom: 1rem; /* More space between contact detail items */
 }
-
 .contact-details li strong {
-    color: #333;
+    /* color: #343A40; /* Already styled */
 }
-
 .contact-details a {
-    color: #337ab7;
-    text-decoration: none;
+    /* color: #0A74DA; /* Already styled (global link color) */
+    font-weight: 500; /* Medium weight for contact links */
 }
-
-.contact-details a:hover {
-    text-decoration: underline;
-}
+/* .contact-details a:hover is already styled globally */
 
 /* Optional map placeholder styling */
 /*
@@ -425,133 +601,143 @@ h1, h2, h3 {
 }
 */
 
-/* --- Footer --- */
+/* --- Footer Redesign --- */
 footer {
-    background-color: #333; /* Same as nav for consistency */
-    color: #bbb; /* Lighter text color for footer */
+    background-color: #343A40; /* Darker background for footer */
+    color: #adb5bd; /* Lighter grey text */
+    padding: 3rem 0; /* More padding */
     text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 2rem; /* Space above the footer */
+    margin-top: 4rem; /* More space above footer */
 }
 
-.footer-container {
-    max-width: 1100px;
-    margin: 0 auto;
+/* .container within footer is already defined */
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Space between elements */
 }
 
-.footer-nav ul {
+.footer-nav-links ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 1rem;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem; /* Space between nav links */
 }
 
-.footer-nav ul li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-.footer-nav ul li a {
-    color: #bbb;
+.footer-nav-links ul li a {
+    color: #ced4da; /* Slightly brighter than base footer text for links */
     text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500; /* Medium weight */
+    transition: color 0.3s ease;
+}
+
+.footer-nav-links ul li a:hover {
+    color: #FFFFFF; /* White on hover */
+    text-decoration: none;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 1.5rem; /* Space between icons */
+}
+
+.footer-social-icons a {
+    color: #ced4da; /* Icon color inherited via currentColor from this */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    color: #FFFFFF; /* White on hover */
+    transform: translateY(-3px); /* Slight lift for icons */
+}
+
+.footer-social-icons svg {
+    width: 24px; /* Control icon size */
+    height: 24px;
+}
+
+.footer-copyright {
     font-size: 0.9rem;
-}
-
-.footer-nav ul li a:hover {
-    color: #fff;
-}
-
-.social-media-links {
-    margin-bottom: 1rem;
-}
-
-.social-media-links a {
-    color: #bbb;
-    text-decoration: none;
-    margin: 0 8px;
-    font-size: 0.9rem; /* Adjust if using icons */
-}
-
-.social-media-links a:hover {
-    color: #fff;
-}
-
-.copyright {
-    font-size: 0.85rem;
-    color: #999;
+    color: #868e96; /* Softer color for copyright */
 }
 
 /* --- Responsive Design --- */
 
 /* General adjustments for smaller screens */
 @media (max-width: 768px) {
-    body {
-        /* Reduce padding-top if nav height changes, or adjust nav height itself */
-        /* padding-top: 60px; /* Example if nav becomes smaller */
+    /* Mobile Heading Adjustments - Keep or refine based on new Nav */
+    h1, #home #headline { 
+        font-size: 2.5rem !important; 
     }
-
-    h1, #home #headline { /* Target headline more specifically if needed */
-        font-size: 2rem; /* Smaller headline on mobile */
-    }
-
     #home #introduction {
-        font-size: 1rem;
+        font-size: 1rem; 
     }
-
     #about h2, #projects h2, #contact h2 {
-        font-size: 1.8rem; /* Smaller section titles */
+        font-size: 2rem !important; 
     }
-
     section {
-        padding: 2rem 1rem; /* Reduce padding on sections */
+        padding: 2rem 1rem; 
     }
 
-    /* --- Navigation Adjustments (Simple) --- */
-    #main-nav .nav-container {
-        flex-direction: column; /* Stack logo and links */
-        padding: 0.5rem 1rem; /* Adjust padding for stacked nav */
+    /* New Mobile Navigation Styles */
+    #main-nav .nav-links {
+        display: none; /* Hide links by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below the nav bar */
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF; /* White background for dropdown */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        padding: 1rem 0; /* Padding for the dropdown area */
     }
 
-    #main-nav .nav-logo {
-        margin-bottom: 0.5rem; /* Space below logo when stacked */
+    #main-nav .nav-links.active { /* Class added by JS to show menu */
+        display: flex;
     }
 
-    #main-nav ul {
-        flex-direction: column; /* Stack nav links */
+    #main-nav .nav-links li {
+        margin: 0;
         width: 100%;
         text-align: center;
     }
 
-    #main-nav ul li {
-        margin: 5px 0; /* Adjust margin for vertical layout */
-        display: block; /* Make li full width for easier tapping */
+    #main-nav .nav-links li a {
+        display: block;
+        padding: 1rem; /* Larger tappable area */
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0; /* Separator for links */
     }
-    
-    #main-nav ul li a {
-        display: block; /* Make links fill their li for easier tapping */
-        padding: 8px;
+    #main-nav .nav-links li:last-child a {
+        border-bottom: none;
     }
-
-    /* Adjust body padding top if nav height changed due to stacking */
-    body {
-         /* Calculate new padding-top based on the new height of the stacked nav */
-         /* This is tricky without JS to get height, estimate or set fixed nav height for mobile */
-         /* For now, let's assume the previous padding-top: 70px; might still be okay or need slight reduction */
-         /* If nav height became, say, 100px after stacking, then body padding-top should be 100px */
-         /* This will be refined when/if a proper hamburger menu is built. */
-         /* For now, let's make the mobile nav a bit shorter to avoid a large body padding */
-    }
-    
-    #main-nav {
-        padding: 0.5rem 0; /* Reduce nav padding */
-        position: static; /* For simpler stacking, remove fixed. Will re-evaluate with hamburger. */
-                         /* If static, body padding-top is not needed for mobile. */
-    }
-    /* If main-nav becomes static, the body padding-top for fixed nav is not needed on mobile */
-    /* So, we reset it here: */
-    body {
-        padding-top: 0 !important; /* Reset padding-top for mobile if nav is static */
+    #main-nav .nav-links li a.active::after,
+    #main-nav .nav-links li a:hover::after {
+       display: none; /* Disable underline indicator in mobile dropdown */
     }
 
+    .hamburger-menu {
+        display: block; /* Show hamburger button */
+    }
+
+    /* Hamburger 'X' animation when active */
+    .hamburger-menu.active .hamburger-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active .hamburger-bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .hamburger-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Body padding-top should remain 70px (or nav height) even on mobile if nav is fixed */
+    /* The old logic for setting body padding-top to 0 when nav was static is removed, 
+       as nav is now always fixed. */
 
     /* --- About Me Section Adjustments --- */
     .about-content {
@@ -586,7 +772,7 @@ footer {
 /* Further adjustments for very small screens (e.g., less than 480px) if needed */
 @media (max-width: 480px) {
     #home #headline {
-        font-size: 1.8rem;
+        font-size: 2rem !important; /* Adjusted hero headline for very small screens */
     }
 
     .cta-buttons .cta-button {
@@ -605,3 +791,116 @@ footer {
         margin-bottom: 0.5rem;
     }
 }
+
+/* --- Project Detail Page --- */
+.project-detail-section { /* Was .project-detail */
+    padding: 2rem 0; /* Adjust padding, container handles horizontal */
+    /* max-width: 800px; /* REMOVE */
+    /* margin: 2rem auto; /* REMOVE */
+    background-color: #fff; /* Keep if distinct background needed */
+    border-radius: 8px; /* Keep if distinct background needed */
+    box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Keep if distinct background needed */
+}
+
+.project-detail-section h1 { /* Was .project-detail h1 */
+    font-size: 2.5rem; /* Adjust if needed, new base is 3rem */
+    color: #0A74DA;
+    margin-bottom: 1.5rem; /* Increased margin */
+    text-align: center;
+}
+
+.project-detail-section p { /* Was .project-detail p */
+    font-size: 1rem; /* Retain specific font size */
+    /* line-height: 1.7; */ /* Now global on body */
+    margin-bottom: 1rem;
+}
+
+.project-navigation {
+   text-align: center;
+   margin-top: 2rem;
+}
+/* Uses .cta-button style already defined */
+
+/* Styling for project title links in project cards */
+/* .project-card .project-title a is now handled by the .project-title a rule */
+
+
+/* --- Project Detail Page Content Enhancements --- */
+/* .project-content-sections h3 is covered by the rule starting with #about .biography h3 */
+
+.project-content-sections ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.project-content-sections ul li {
+    margin-bottom: 0.5rem;
+}
+
+.project-content-sections figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.project-content-sections figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.project-content-sections figure figcaption {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* --- Scroll Animation --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px); /* Start slightly lower */
+    transition: opacity 0.8s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Enhanced Focus Styles --- */
+/* Apply to links and buttons, complementing form input focus styles */
+a:focus,
+button:focus { /* Using :focus as a broader fallback; :focus-visible is preferred if full support is assumed/polyfilled */
+    outline: none; /* Remove default outline if custom shadow is applied */
+    box-shadow: 0 0 0 0.2rem rgba(10, 116, 218, 0.25); /* Primary blue glow, matches form inputs */
+}
+
+/* For elements that don't naturally get a border or background, like text links, an outline is better */
+/* Ensure nav-links and logo also get a clear focus style if the box-shadow isn't sufficient */
+#main-nav .nav-logo:focus,
+#main-nav .nav-links li a:focus {
+    outline: 2px solid #0A74DA; /* Primary blue outline */
+    outline-offset: 2px; /* Space between element and outline */
+    box-shadow: none; /* Prefer outline for these text-based links */
+}
+
+.footer-nav-links a:focus,
+.footer-social-icons a:focus {
+    outline: 2px solid #0A74DA; /* Primary blue outline for footer links */
+    outline-offset: 2px;
+    box-shadow: none; /* Prefer outline here too */
+}
+
+/* Ensure buttons that already have distinct styling still get a clear focus indicator */
+/* The .cta-button and .project-links .project-link already have hover states that include transform. */
+/* The global button:focus will add a box-shadow which should be fine. */
+/* If specific outline is needed for them, it can be added: */
+/*
+.cta-button:focus,
+.project-links .project-link:focus {
+    outline: 2px solid #0056b3; // Darker blue for outline on buttons
+    outline-offset: 1px;
+}
+*/
